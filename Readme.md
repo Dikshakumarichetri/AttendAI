@@ -51,7 +51,7 @@ Frontend Setup
 Result
 Backend server running, MongoDB connected, basic routes created, frontend initialized, and project structure set up.
 
-Day 2  Webcam + Face Detection
+Day 2 Webcam + Face Detection
 
 Goal
 Build real-time face detection in browser using webcam and face-api.js.
@@ -79,13 +79,13 @@ Output
 Status
 Completed: Working face detection pipeline in browser
 
-
-Day 3  Face Registration System
+Day 3 Face Registration System
 
 Goal
 Register users and save their facial data for future recognition.
 
 Features Implemented
+
 - Created a user registration form
 - Captured user name input
 - Reused webcam component from Day 2
@@ -100,6 +100,7 @@ Features Implemented
 - Stored user name and face descriptor in MongoDB Atlas
 
 Technologies Used
+
 - Next.js
 - React
 - face-api.js
@@ -109,6 +110,7 @@ Technologies Used
 - Mongoose
 
 Learning Outcomes
+
 - Understanding face descriptors and embeddings
 - Sending data from frontend to backend
 - Creating API endpoints with Express
@@ -118,3 +120,24 @@ Learning Outcomes
 
 End Result
 Users can enter their name, capture their face, generate a face descriptor, and save their registration data in MongoDB for future face recognition and attendance tracking.
+
+Day 4 – Face Recognition Login
+
+Goal
+Recognize registered users using live webcam input and match them with stored face data.
+
+Features Implemented
+
+- Loaded stored user face descriptors from MongoDB
+- Captured live face from webcam
+- Generated real-time face descriptor using face-api.js
+- Compared live descriptor with stored descriptors using Euclidean distance
+- Implemented face matching logic with threshold filtering
+- Displayed recognized user name or "Unknown User"
+- (Optional) Added face detection box overlay for visual feedback
+
+Key Concept
+Face recognition is done by comparing numerical face embeddings, not images.
+
+End Result
+The system can identify a registered user in real time using webcam and display their name on screen.
