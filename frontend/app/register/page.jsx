@@ -48,26 +48,30 @@ export default function Register(){
   };
   
     return(
-        <div>
+        <div className="center_content">
         <h1>Register User</h1>
   
-        <input
-          type="text"
-          placeholder="Enter name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-  
-        <br />
+      
         <br />
   
         <Webcam videoRef={videoRef} />
   
         <br />
+        <input
+          type="text"
+          placeholder="Enter name"
+          value={name}
+          className="input_box"
+          onChange={(e) => setName(e.target.value)}
+        />
   
+        <br />
+        <div className="btn_home" >
         <button onClick={handleRegister}>
           Register Face
-        </button>
+          </button>
+        </div>
+        <p>Already Registered ?  <a className="link_style" href="/login">  Login here</a> </p>
       </div>
     )
 }

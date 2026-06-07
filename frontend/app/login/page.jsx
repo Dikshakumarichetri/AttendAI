@@ -8,11 +8,13 @@ export default function Login() {
   const videoRef = useRef(null);
 
   const [recognizedUser, setRecognizedUser] = useState("");
+  const [attendanceMessage, setAttendanceMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleRecognize = async () => {
     try {
       setLoading(true);
+      setAttendanceMessage("");
 
       const detection = await faceapi
         .detectSingleFace(
@@ -45,8 +47,6 @@ export default function Login() {
           user.descriptor
         );
 
-        console.log(user.name, distance);
-
         if (distance < smallestDistance) {
           smallestDistance = distance;
           bestMatch = user;
@@ -55,8 +55,26 @@ export default function Login() {
 
       if (bestMatch && smallestDistance < 0.6) {
         setRecognizedUser(bestMatch.name);
+
+        const attendanceRes = await fetch(
+          "http://localhost:8000/api/attendance/mark",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId: bestMatch._id,
+            }),
+          }
+        );
+
+        const attendanceData = await attendanceRes.json();
+
+        setAttendanceMessage(attendanceData.message);
       } else {
         setRecognizedUser("Unknown User");
+        setAttendanceMessage("");
       }
 
       setLoading(false);
@@ -67,25 +85,28 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className="center_content">
       <h1>Face Recognition Login</h1>
 
       <Webcam videoRef={videoRef} />
 
       <br />
-
-      <button onClick={handleRecognize}>
-        Recognize Face
-      </button>
+      <div className="btn_home">
+  <button onClick={handleRecognize}>
+    Recognize Face
+  </button>
+</div>
 
       <br />
-      <br />
+      {loading && <p className="loading_text">Recognizing...</p>}
 
-      {loading && <p>Recognizing...</p>}
-
-      <h2>
-        Recognized User: {recognizedUser}
-      </h2>
+<div className="result_box">
+<h3>
+  Recognized User: {recognizedUser || "Waiting for recognition..."}
+</h3>
+  <h4>{attendanceMessage}</h4>
+</div>
+      
     </div>
   );
 }

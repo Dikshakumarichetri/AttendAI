@@ -121,7 +121,7 @@ Learning Outcomes
 End Result
 Users can enter their name, capture their face, generate a face descriptor, and save their registration data in MongoDB for future face recognition and attendance tracking.
 
-Day 4 – Face Recognition Login
+Day 4 Face Recognition Login
 
 Goal
 Recognize registered users using live webcam input and match them with stored face data.
@@ -141,3 +141,58 @@ Face recognition is done by comparing numerical face embeddings, not images.
 
 End Result
 The system can identify a registered user in real time using webcam and display their name on screen.
+
+Day 5  Attendance System Logic
+
+Goal
+
+Record attendance after a user is successfully recognized using face recognition.
+
+Features Implemented
+
+- Created an Attendance schema with:
+
+  - userId
+  - date
+  - time
+  - status
+
+- Attendance workflow:
+
+  1. Detect face
+  2. Generate face descriptor
+  3. Compare with registered users
+  4. Identify the best match
+  5. Call attendance API
+  6. Save attendance in MongoDB
+
+- Prevent duplicate attendance by checking if the user has already been marked for the day.
+
+- Created attendance API:
+
+```http
+POST /api/attendance/mark
+```
+
+- Display attendance status on the Login page:
+
+  - Attendance marked successfully
+  - Attendance already marked today
+
+Concepts Learned
+
+- Attendance workflow
+- API communication
+- MongoDB document creation
+- Duplicate prevention
+- Face recognition integration
+
+Outcome
+
+-Attendance recording works
+
+-Duplicate attendance prevention works
+
+-Attendance data is stored in MongoDB
+
+-Attendance status is displayed to users

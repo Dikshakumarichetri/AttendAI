@@ -1,8 +1,12 @@
+
+
+
+
 const express = require("express");
 const router = express.Router();
 
-// placeholder routes only
-router.post("/mark", (req, res) => {});
-router.get("/records", (req, res) => {});
+const { markAttendance } = require("../controllers/attendanceController");
+
+router.post("/mark", markAttendance);
 
 module.exports = router;
