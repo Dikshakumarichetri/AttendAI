@@ -142,7 +142,7 @@ Face recognition is done by comparing numerical face embeddings, not images.
 End Result
 The system can identify a registered user in real time using webcam and display their name on screen.
 
-Day 5  Attendance System Logic
+Day 5 Attendance System Logic
 
 Goal
 
@@ -196,3 +196,39 @@ Outcome
 -Attendance data is stored in MongoDB
 
 -Attendance status is displayed to users
+
+Day 6 Admin Dashboard + Analytics
+
+Goal
+Build an admin dashboard to manage and visualize attendance data.
+
+Features
+
+->Dashboard
+
+- Displays total attendance records
+
+->Attendance Table
+
+- Shows user, date, time, and status
+
+->Filters
+
+- Filter by user name
+- Filter by date
+- Filter by status
+
+->Chart
+line chart showing attendance trend by date (Recharts)
+
+Learnings
+
+- React filtering (user, date, status)
+- Data visualization with Recharts
+- Dashboard UI structure
+- Working with API data in frontend
+
+Outcome
+
+- Functional admin dashboard with filters and analytics
+- Attendance data visualized successfully

@@ -86,8 +86,10 @@ export default function Login() {
 
   return (
     <div className="center_content">
+      <div className="login_heading">
       <h1>Face Recognition Login</h1>
-
+   <a className="link_style" href="/dashboard">  Go To dashboard </a> 
+   </div>
       <Webcam videoRef={videoRef} />
 
       <br />
