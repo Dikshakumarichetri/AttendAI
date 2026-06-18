@@ -9,8 +9,10 @@ const connectDB = require("./config/db");
 connectDB();
 
 app.use(cors({
-  origin: "http://localhost:3000","https://attend-ai-seven.vercel.app/"
 
+  origin:[ "http://localhost:3000",
+    "https://attend-ai-seven.vercel.app/"
+  ]
 }));
 
 app.use(express.json());
