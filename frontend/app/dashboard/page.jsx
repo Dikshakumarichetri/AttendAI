@@ -21,7 +21,7 @@ export default function Dashboard() {
   }, []);
 
   const fetchAttendance = async () => {
-    const res = await fetch("http://localhost:8000/api/attendance");
+    const res = await fetch("https://attendai-j152.onrender.com/api/attendance");
     const data = await res.json();
     setAttendance(data);
   };

@@ -33,7 +33,7 @@ export default function Login() {
       const liveDescriptor = detection.descriptor;
 
       const res = await fetch(
-        "http://localhost:8000/api/auth/users"
+        "https://attendai-j152.onrender.com/api/auth/users"
       );
 
       const users = await res.json();
@@ -57,7 +57,7 @@ export default function Login() {
         setRecognizedUser(bestMatch.name);
 
         const attendanceRes = await fetch(
-          "http://localhost:8000/api/attendance/mark",
+          "https://attendai-j152.onrender.com/api/attendance/mark",
           {
             method: "POST",
             headers: {

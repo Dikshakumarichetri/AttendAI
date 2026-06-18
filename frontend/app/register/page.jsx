@@ -36,7 +36,7 @@ export default function Register(){
   
       // Check existing users first
       const usersRes = await fetch(
-        "http://localhost:8000/api/auth/users"
+        "https://attendai-j152.onrender.com/api/auth/users"
       );
   
       const users = await usersRes.json();
@@ -67,7 +67,7 @@ export default function Register(){
   
       // Save new user
       const res = await fetch(
-        "http://localhost:8000/api/auth/register",
+        "https://attendai-j152.onrender.com/api/auth/register",
         {
           method: "POST",
           headers: {
