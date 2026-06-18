@@ -9,7 +9,8 @@ const connectDB = require("./config/db");
 connectDB();
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "http://localhost:3000","https://attend-ai-seven.vercel.app/"
+
 }));
 
 app.use(express.json());
@@ -26,6 +27,11 @@ app.get("/", (req, res) => {
   res.send("Hello from your Express backend!");
 });
 
-app.listen(Port, () => {
-  console.log(`Server is running on http://localhost:${Port}`);
+// app.listen(Port, () => {
+//   console.log(`Server is running on http://localhost:${Port}`);
+// });
+
+
+app.listen(process.env.PORT || 8000, () => {
+  console.log("Server running");
 });
