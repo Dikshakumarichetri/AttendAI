@@ -8,12 +8,15 @@ const Port = process.env.PORT;
 const connectDB = require("./config/db");
 connectDB();
 
-app.use(cors({
-
-  origin:[ "http://localhost:3000",
-    "https://attend-ai-seven.vercel.app/"
-  ]
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://attend-ai-seven.vercel.app"
+    ],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
